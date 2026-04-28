@@ -1,0 +1,27 @@
+{
+  "name": "mag-ai",
+  "version": "1.0.0",
+  "description": "Yazılım dünyasında güncel kalmak ve içerik üretmek tam zamanlı bir iştir. Geliştiriciler olarak vaktimizi araştırma ameleliğine değil, kod yazmaya ayırmalıyız. MagAI, bu sorunu çözen dijital kölemizdir. İçerik tüketimini makinelere devret, yaratıcılığı ve inşayı kendine sakla.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Erlik-1417/Mag-AI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Erlik-1417/Mag-AI/issues"
+  },
+  "homepage": "https://github.com/Erlik-1417/Mag-AI#readme",
+  "dependencies": {
+    "@google/genai": "^1.50.1",
+    "axios": "^1.15.2",
+    "dotenv": "^17.4.2",
+    "rss-parser": "^3.13.0"
+  }
+}
