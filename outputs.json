@@ -20,5 +20,16 @@
       "tr": "Ghostty GitHub'dan ayrılıyor. Mitchell Hashimoto, platformun limitlerine takılmak yerine mühendislik bağımsızlığını seçti. 'Vendor lock-in' her zaman bulut servisleri demek değildir; bazen kullandığınız repo platformu bile sizi yavaşlatır. Pragmatik bir hamle. 🚀 #Ghostty #GitHub #Coding",
       "en": "Ghostty is leaving GitHub. Mitchell Hashimoto is prioritizing engineering independence over platform convenience. When GitHub's constraints start hindering your project's flow, you move. A bold, pragmatic move for one of the most exciting terminal projects out there. 💻⚡ #Ghostty #GitHub #OpenSource"
     }
+  },
+  {
+    "timestamp": "29.04.2026 04:26:04",
+    "linkedin": {
+      "tr": "Yazılım dünyasında bugün standart kabul ettiğimiz 'Pull Request' kültürü ve merkezi ekosistemler her zaman orada değildi. Armin Ronacher’ın 'Before GitHub' yazısı, Open Source dünyasının mailing listeleri, yamalar (patches) ve parçalanmış altyapılarla nasıl hayatta kaldığını hatırlatıyor. Bir mühendis olarak baktığımda; bugün GitHub gibi platformların sağladığı en büyük katma değerin sadece kod depolama değil, iş birliği maliyetini (collaboration friction) minimize etmesi olduğunu görüyorum. Altyapı yönetmekten kod yazmaya vakit bulamadığımız o günlerden, tamamen ürüne odaklanabildiğimiz bu döneme geçiş, modern yazılım mimarisinin en büyük sessiz devrimidir.",
+      "en": "Standardization is often the unsung hero of developer productivity. Looking back at the pre-GitHub era, it's clear that the 'social coding' revolution did more than just host git repositories—it eliminated the massive friction of fragmented infrastructure. Before the unified PR workflow, we dealt with mailing lists, manual patches, and the overhead of self-hosting SVN/Mercurial servers. For engineering leaders, this serves as a reminder: the best tools are those that allow your team to stop managing the 'plumbing' and start delivering business value. We've come a long way from the chaos of SourceForge and decentralized hosting."
+    },
+    "x_twitter": {
+      "tr": "GitHub öncesi dönem tam bir 'vahşi batı' gibiydi. Patch dosyasını mailing list'e atıp onay beklemek, SVN sunucusu çöktüğünde debug yapmak... Armin Ronacher harika özetlemiş. Genç meslektaşlar için korku filmi tadında, eskiler içinse göz yaşartan bir nostalji. Şuradan bir PR atmak ne büyük lüksmüş aslında.",
+      "en": "The pre-GitHub era was a different beast. Mailing lists, manual patches, and hosting your own Mercurial/SVN servers. It wasn't just about code; it was an infrastructure nightmare. GitHub didn't just give us hosting; it gave us a social protocol. If you think your CI/CD pipeline is slow today, you wouldn't survive the 'patch-via-email' days. ☕️"
+    }
   }
 ]
