@@ -1,9 +1,9 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { magAiSystemPrompt } from "./prompt.js";
-import { fetchNews } from "./fetcher.js"; // Senin fetcher'ı ekledik
+import { fetchNews } from "./fetcher.js"; 
+import { memory } from "./database.js"; // HAFIZAYI İÇERİ ALDIK
 import 'dotenv/config'; 
 
-// API Anahtarını .env'den alıyoruz (Güvenlik!)
 const API_KEY = process.env.GEMINI_API_KEY; 
 const genAI = new GoogleGenerativeAI(API_KEY);
 
@@ -13,37 +13,48 @@ async function runMagAI() {
   const model = genAI.getGenerativeModel({
     model: "gemini-3-flash-preview",
     systemInstruction: magAiSystemPrompt,
-    generationConfig: {
-      responseMimeType: "application/json",
-    }
+    generationConfig: { responseMimeType: "application/json" }
   });
 
   try {
-    // 1. ADIM: Senin fetcher ile Hacker News'ten gerçek veriyi çekiyoruz
     const newsArray = await fetchNews();
-    
-    if (!newsArray || newsArray.length === 0) {
-      return console.log("⚠️ Haber bulunamadı, RSS akışını kontrol et.");
+    if (!newsArray || newsArray.length === 0) return console.log("⚠️ Haber bulunamadı.");
+
+    let isNewContentProcessed = false;
+
+    // Haberleri sırayla dönüp hafızayı kontrol ediyoruz
+    for (const currentNews of newsArray) {
+      const alreadySeen = await memory.isSeen(currentNews.link);
+
+      if (alreadySeen) {
+        console.log(`⏩ Atlıyoruz (Zaten Okundu): ${currentNews.title}`);
+        continue; // Bu haberi geç, sıradakine bak
+      }
+
+      // EĞER BURAYA GELDİYSE HABER YENİDİR!
+      console.log(`📡 YENİ HAMMADDE İŞLENİYOR: ${currentNews.title}`);
+      
+      const dynamicInput = `Haber Başlığı: ${currentNews.title}\nKaynak Link: ${currentNews.link}`;
+      const result = await model.generateContent(dynamicInput);
+      const finalData = JSON.parse(result.response.text());
+      
+      console.log("\n✅ MagAI İçerikleri Üretti:\n");
+      console.table(finalData);
+
+      // İşimiz bitti, haberi hafızaya kazı ki bir daha sormasın
+      await memory.save(currentNews.link, currentNews.title);
+      console.log("💾 Veritabanına kaydedildi.");
+      
+      isNewContentProcessed = true;
+      break; // Şimdilik sadece 1 tane YENİ haber işleyip motoru durduruyoruz (Test için)
     }
 
-    // 2. ADIM: Ortağının 'rawNotes' mantığını dinamik yapıyoruz
-    // Şimdilik sadece ilk haberi göndererek sistemi test ediyoruz
-    const currentNews = newsArray[0];
-    const dynamicInput = `Haber Başlığı: ${currentNews.title}\nKaynak Link: ${currentNews.link}`;
-
-    console.log(`📡 Analiz edilen taze haber: ${currentNews.title}`);
-
-    // 3. ADIM: Dinamik veriyi modele gönderiyoruz
-    const result = await model.generateContent(dynamicInput);
-    const responseText = result.response.text();
-    
-    const finalData = JSON.parse(responseText);
-    
-    console.log("✅ MagAI İçerikleri Üretti:\n");
-    console.table(finalData); // Konsolda daha şık durur
+    if (!isNewContentProcessed) {
+      console.log("😴 Tüm haberler zaten işlenmiş, MagAI yatmaya devam ediyor.");
+    }
 
   } catch (error) {
-    console.error("❌ Bir hata oluştu dostum:", error.message);
+    console.error("❌ Motor arıza yaptı:", error.message);
   }
 }
 
