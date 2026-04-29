@@ -1,0 +1,24 @@
+[
+  {
+    "timestamp": "29.04.2026 03:55:37",
+    "linkedin": {
+      "tr": "Ghostty'nin GitHub'dan ayrılma kararı, modern yazılım ekosistemindeki 'altyapı egemenliği' tartışmasını tekrar alevlendirdi. Mitchell Hashimoto, platformun giderek karmaşıklaşan yapısı ve topluluk odağından uzaklaşması nedeniyle Ghostty'yi kendi kontrolündeki bir altyapıya taşıyor. Kıdemli bir mühendis gözüyle baktığımda, bu hamleyi sadece bir göç değil; performans, odak ve bağımsızlık için yapılmış stratejik bir yatırım olarak görüyorum. Araçlar projenin önüne geçmeye başladığında, pragmatik olan çözüm kendi yolunu çizmektir.",
+      "en": "Ghostty’s departure from GitHub marks a significant shift towards infrastructure sovereignty in the OSS community. Mitchell Hashimoto is moving the project to a self-hosted model to escape the increasing bloat and feature-creep of centralized platforms. From a senior engineering perspective, this isn't just a migration; it’s a calculated move to prioritize developer experience and long-term project health over platform convenience. When the overhead of a platform starts hindering the craft, reclaiming control is the only pragmatic path forward."
+    },
+    "x_twitter": {
+      "tr": "Ghostty GitHub'dan ayrılıyor. 🚀 Mitchell Hashimoto, platformun 'bloatware' haline gelmesine ve karmaşıklığına karşı bayrak açtı. Bir yazılımcı için en büyük lüks, kullandığı araçların kendine engel olmamasıdır. Bağımsızlık ve performans, popülariteden daha değerlidir. 🛠️ #Ghostty #GitHub #YazılımGeliştirme",
+      "en": "Ghostty is leaving GitHub. ✌️ Mitchell Hashimoto is choosing infrastructure sovereignty over centralized convenience. When a platform adds more friction than value, it's time to move the source code home. A bold and pragmatic move for the Zig-based terminal project. 💻 #Ghostty #GitHub #OpenSource #SoftwareEngineering"
+    }
+  },
+  {
+    "timestamp": "29.04.2026 04:02:38",
+    "linkedin": {
+      "tr": "Ghostty’nin GitHub’dan ayrılış kararı, modern yazılım dünyasında altyapı bağımsızlığının ve 'platform yorgunluğunun' somut bir göstergesi. Mitchell Hashimoto, projenin ölçeği arttıkça GitHub’ın sunduğu hazır kalıpların mühendislik hızını kısıtladığını fark ederek daha egemen bir geliştirme ortamına geçiyor. Bu hamle, sadece bir depo taşıma işlemi değil; bir mühendislik liderinin, topluluk etkileşimi ve CI/CD süreçleri üzerinde tam kontrol sağlama vizyonudur. Büyük projelerde araçların esiri olmak yerine, araçları projenin ihtiyaçlarına göre şekillendirmek gerçek pragmatizmdir.",
+      "en": "Ghostty’s departure from GitHub marks a significant shift towards infrastructure sovereignty in the high-scale open-source ecosystem. Mitchell Hashimoto is moving the project to a more controlled environment, highlighting that even the industry standard (GitHub) can become a bottleneck for developer velocity and specific community needs. This decision reinforces a core engineering principle: when your platform limits your craft, it's time to build or move to one that empowers it. Infrastructure is not just a utility; it's a strategic choice for project longevity."
+    },
+    "x_twitter": {
+      "tr": "Ghostty GitHub'dan ayrılıyor. Mitchell Hashimoto, platformun limitlerine takılmak yerine mühendislik bağımsızlığını seçti. 'Vendor lock-in' her zaman bulut servisleri demek değildir; bazen kullandığınız repo platformu bile sizi yavaşlatır. Pragmatik bir hamle. 🚀 #Ghostty #GitHub #Coding",
+      "en": "Ghostty is leaving GitHub. Mitchell Hashimoto is prioritizing engineering independence over platform convenience. When GitHub's constraints start hindering your project's flow, you move. A bold, pragmatic move for one of the most exciting terminal projects out there. 💻⚡ #Ghostty #GitHub #OpenSource"
+    }
+  }
+]
