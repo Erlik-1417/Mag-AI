@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Erlik-1417/Mag-AI#readme",
   "dependencies": {
     "@google/genai": "^1.50.1",
+    "@google/generative-ai": "^0.24.1",
     "axios": "^1.15.2",
     "dotenv": "^17.4.2",
     "rss-parser": "^3.13.0"
