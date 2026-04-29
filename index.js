@@ -1,45 +1,50 @@
-// Gerekli paketleri ve yazdığımız prompt'u içeri alıyoruz
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { magAiSystemPrompt } from "./prompt.js";
+import { fetchNews } from "./fetcher.js"; // Senin fetcher'ı ekledik
+import 'dotenv/config'; 
 
-// TODO: Kendi API anahtarını buraya eklemelisin (.env kullanmak en sağlıklısı)
-const API_KEY = "SENIN_GEMINI_API_ANAHTARIN"; 
+// API Anahtarını .env'den alıyoruz (Güvenlik!)
+const API_KEY = process.env.GEMINI_API_KEY; 
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 async function runMagAI() {
-  console.log("MagAI motoru ısınıyor...");
+  console.log("🚀 MagAI motoru ateşleniyor...");
 
-  // Modeli ve kurallarımızı tanımlıyoruz
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash", // Hızlı ve JSON dönmekte çok başarılı bir model
+    model: "gemini-1.5-flash",
     systemInstruction: magAiSystemPrompt,
     generationConfig: {
-      responseMimeType: "application/json", // MagAI'yı JSON dışına çıkmaması için kilitliyoruz
+      responseMimeType: "application/json",
     }
   });
 
-  // Burası senin veya uygulamanın MagAI'ya fırlatacağı ham veriler:
-  const rawNotes = `
-    Bugün projede çok yorulduk. Prompt yapısını kurduk. 
-    Node.js üzerinden API'yi bağladık. 
-    JSON formatında çıktı almayı başardık. Çirkin ama çalışıyor işte.
-  `;
-
   try {
-    // Veriyi modele gönderiyoruz
-    const result = await model.generateContent(rawNotes);
+    // 1. ADIM: Senin fetcher ile Hacker News'ten gerçek veriyi çekiyoruz
+    const newsArray = await fetchNews();
+    
+    if (!newsArray || newsArray.length === 0) {
+      return console.log("⚠️ Haber bulunamadı, RSS akışını kontrol et.");
+    }
+
+    // 2. ADIM: Ortağının 'rawNotes' mantığını dinamik yapıyoruz
+    // Şimdilik sadece ilk haberi göndererek sistemi test ediyoruz
+    const currentNews = newsArray[0];
+    const dynamicInput = `Haber Başlığı: ${currentNews.title}\nKaynak Link: ${currentNews.link}`;
+
+    console.log(`📡 Analiz edilen taze haber: ${currentNews.title}`);
+
+    // 3. ADIM: Dinamik veriyi modele gönderiyoruz
+    const result = await model.generateContent(dynamicInput);
     const responseText = result.response.text();
     
-    // Gelen JSON string'ini JavaScript objesine çeviriyoruz
     const finalData = JSON.parse(responseText);
     
     console.log("✅ MagAI İçerikleri Üretti:\n");
-    console.log(JSON.stringify(finalData, null, 2));
+    console.table(finalData); // Konsolda daha şık durur
 
   } catch (error) {
-    console.error("❌ Bir hata oluştu dostum:", error);
+    console.error("❌ Bir hata oluştu dostum:", error.message);
   }
 }
 
-// Fonksiyonu çalıştırıyoruz
 runMagAI();
